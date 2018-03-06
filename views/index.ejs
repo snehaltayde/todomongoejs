@@ -1,0 +1,27 @@
+<% include ../views/partials/header %>
+<form action="/todo/add" method="post">
+  <div>
+    <label >Todo Name</label>
+    <input type="text" name="text" placeholder="Add Todo" >
+  </div>
+  <div>
+    <label >Todo Name</label>
+    <textarea name="body" placeholder="Add Body"></textarea>
+  </div>
+  <button type="submit" name="submit">Submit</button>
+</form>
+
+
+<ul>
+  <% Todos.forEach(function(todo){ %>
+
+      <li><%= todo.text %> - <%= todo.desc %>
+      <a data-id ="<%= todo._id %> " href="#" class="delete-todo" >Delete</a>
+      <a href="/todo/edit/<%= todo._id %> " >Edit</a>
+
+    </li>
+
+  <% }) %>
+
+</ul>
+<% include ../views/partials/footer %>
