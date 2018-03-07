@@ -1,27 +1,36 @@
 <% include ../views/partials/header %>
-<form action="/todo/add" method="post">
-  <div>
-    <label >Todo Name</label>
-    <input type="text" name="text" placeholder="Add Todo" >
-  </div>
-  <div>
-    <label >Todo Name</label>
-    <textarea name="body" placeholder="Add Body"></textarea>
-  </div>
-  <button type="submit" name="submit">Submit</button>
-</form>
+<div class="row">
+<div class="col-md-6">
+  <form action="/todo/add" method="post">
+    <div class="form-group">
+      <label >Todo Name</label>
+      <input class="form-control" type="text" name="text" placeholder="Add Todo" >
+    </div>
+    <div class="form-group">
+      <label >Todo Details</label>
+      <textarea class="form-control" name="body" placeholder="Add Body"></textarea>
+    </div>
+    <button class="btn btn-primary btn-block"type="submit" name="submit">Submit</button>
+  </form>
+
+</div>
+<div class="col-md-6">
+  <ul class="list-group">
+    <% Todos.forEach(function(todo){ %>
+
+        <li class="list-group-item"><%= todo.text %> - <%= todo.desc %>
+        <a class="btn btn-default" href="/todo/edit/<%= todo._id %> " >Edit</a>
+        <a data-id ="<%= todo._id %> " href="#" class="delete-todo btn btn-danger" >Delete</a>
 
 
-<ul>
-  <% Todos.forEach(function(todo){ %>
+      </li>
 
-      <li><%= todo.text %> - <%= todo.desc %>
-      <a data-id ="<%= todo._id %> " href="#" class="delete-todo" >Delete</a>
-      <a href="/todo/edit/<%= todo._id %> " >Edit</a>
+    <% }) %>
 
-    </li>
+  </ul>
+</div>
+</div>
 
-  <% }) %>
 
-</ul>
+
 <% include ../views/partials/footer %>

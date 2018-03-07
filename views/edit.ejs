@@ -1,14 +1,20 @@
 <% include ../views/partials/header %>
-<form action="/todo/edit/<%=todo._id%>" method="post">
-  <div>
-    <label >Todo Name</label>
-    <input type="text" name="text" value="<%=todo.text%>" >
+<div class="row">
+  <div class="col-md-6">
+    <form action="/todo/edit/<%=todo._id%>" method="post">
+      <div class="form-group">
+        <label>Todo Name</label>
+        <input class="form-control" type="text" name="text" value="<%=todo.text%>" >
+      </div>
+      <div class="form-group">
+        <label >Todo Name</label>
+        <textarea class="form-control" name="body" value=""><%=todo.desc%></textarea>
+      </div>
+      <br>
+      <button class="btn btn-primary"type="submit" name="submit">Submit</button>
+      <a class="btn btn-danger" href='/'>Cancel</a>
+    </form>
   </div>
-  <div>
-    <label >Todo Name</label>
-    <textarea name="body" value=""><%=todo.desc%></textarea>
-  </div>
-  <button type="submit" name="submit">Submit</button> <a href='/'>Cancel</a>
-</form>
+</div>
 
 <% include ../views/partials/footer %>
